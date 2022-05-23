@@ -27,8 +27,8 @@ public class AbsentSpecification {
                     predicateList.add(absentPredicate);
                 }
 
-                if (absentSearchDTO.getTimeIn() != null){
-                    Predicate absentPredicate = criteriaBuilder.between(root.get("timeIn"), absentSearchDTO.getTimeIn(), LocalDateTime.of(null, LocalTime.of(17,00)));
+                if (absentSearchDTO.getTimeIn() != null && absentSearchDTO.getTimeOut() != null){
+                    Predicate absentPredicate = criteriaBuilder.between(root.get("timeIn"), absentSearchDTO.getTimeIn(), absentSearchDTO.getTimeOut());
                     predicateList.add(absentPredicate);
                 }
 

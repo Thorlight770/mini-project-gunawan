@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class SalarySearchDTO {
     private String employeeId;
-    private Integer totalSalary;
+    private Integer totalSalaryMin;
+    private Integer totalSalaryMax;
     private LocalDateTime dateSalary;
 }

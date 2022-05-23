@@ -49,7 +49,7 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public Salary getSalaryById(String id) {
-        return salaryRepository.findById(id).get();
+        return salaryRepository.getSalaryById(id).get();
     }
 
     @Override
