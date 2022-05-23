@@ -24,7 +24,7 @@ public class EmployeeController {
                                                         @RequestParam(name = "page", defaultValue = "0") Integer page,
                                                         @RequestParam(name = "size", defaultValue = "3") Integer size,
                                                         @RequestParam(name = "sort", defaultValue = "name") String sort,
-                                                        @RequestParam(name = "direction", defaultValue = "ASC") String direction){
+                                                        @RequestParam(name = "direction", defaultValue = "ASC") Sort.Direction direction){
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sort));
         Page<Employee> employeePage = employeeService.getEmployeePerPage(pageable,employeeSearchDTO);
@@ -32,17 +32,17 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee saveEmployee(Employee employee){
+    public Employee saveEmployee(@RequestBody Employee employee){
         return employeeService.saveEmployee(employee);
     }
 
     @PutMapping
-    public Employee updateEmployee(Employee employee){
+    public Employee updateEmployee(@RequestBody Employee employee){
         return employeeService.saveEmployee(employee);
     }
 
     @DeleteMapping
-    public Boolean deleteEmployee(String id){
+    public String deleteEmployee(@RequestParam String id){
         return employeeService.deleteEmployeeById(id);
     }
 }

@@ -22,8 +22,8 @@ public class AbsentController {
     public PageResponseWrapper<Absent> searchAbsent(@RequestBody AbsentSearchDTO absentSearchDTO,
                                                         @RequestParam(name = "page", defaultValue = "0") Integer page,
                                                         @RequestParam(name = "size", defaultValue = "3") Integer size,
-                                                        @RequestParam(name = "sort", defaultValue = "name") String sort,
-                                                        @RequestParam(name = "direction", defaultValue = "ASC") String direction){
+                                                        @RequestParam(name = "sort", defaultValue = "id") String sort,
+                                                        @RequestParam(name = "direction", defaultValue = "ASC") Sort.Direction direction){
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sort));
         Page<Absent> absentPage = absentService.getAbsentPerPage(pageable,absentSearchDTO);
@@ -31,17 +31,17 @@ public class AbsentController {
     }
 
     @PostMapping
-    public Absent saveAbsent(Absent absent){
+    public Absent saveAbsent(@RequestBody Absent absent){
         return absentService.saveAbsent(absent);
     }
 
     @PutMapping
-    public Absent updateAbsent(Absent absent){
+    public Absent updateAbsent(@RequestBody Absent absent){
         return absentService.saveAbsent(absent);
     }
 
     @DeleteMapping
-    public Boolean deleteAbsent(String id){
+    public Boolean deleteAbsent(@RequestParam String id){
         return absentService.deleteAbsentById(id);
     }
 }

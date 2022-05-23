@@ -11,7 +11,5 @@ public interface AbsentService {
 
     Absent saveAbsent(Absent absent);
 
-    Absent getAbsentByIdEmployee(String idEmployee);
-
     Boolean deleteAbsentById(String id);
 }

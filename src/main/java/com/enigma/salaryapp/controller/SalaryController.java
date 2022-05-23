@@ -23,7 +23,7 @@ public class SalaryController {
                                                         @RequestParam(name = "page", defaultValue = "0") Integer page,
                                                         @RequestParam(name = "size", defaultValue = "3") Integer size,
                                                         @RequestParam(name = "sort", defaultValue = "name") String sort,
-                                                        @RequestParam(name = "direction", defaultValue = "ASC") String direction){
+                                                        @RequestParam(name = "direction", defaultValue = "asc") Sort.Direction direction){
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sort));
         Page<Salary> salaryPage = salaryService.getSalaryPerPage(pageable,salarySearchDTO);
@@ -31,17 +31,19 @@ public class SalaryController {
     }
 
     @PostMapping
-    public Salary saveSalary(Salary salary){
+    public Salary saveSalary(@RequestBody Salary salary){
+        System.out.println("[CONTROLLER]");
+        System.out.println("[CONTROLLER SALARY]"+salary.getSalaryDate());
         return salaryService.saveSalary(salary);
     }
 
     @PutMapping
-    public Salary updateSalary(Salary salary){
+    public Salary updateSalary(@RequestBody Salary salary){
         return salaryService.saveSalary(salary);
     }
 
     @DeleteMapping
-    public Boolean deleteSalary(String id){
+    public Boolean deleteSalary(@RequestParam String id){
         return salaryService.deleteSalaryById(id);
     }
 }

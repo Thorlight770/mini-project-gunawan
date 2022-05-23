@@ -23,8 +23,9 @@ public class Employee {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
+    private String name;
     private LocalDate date;
     private String address;
-    @OneToMany(mappedBy = "employeeId")
+    @OneToMany(mappedBy = "employee")
     private List<Absent> absentList;
 }

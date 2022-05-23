@@ -13,5 +13,5 @@ public interface EmployeeService {
 
     Employee getEmployeeById(String id);
 
-    Boolean deleteEmployeeById(String id);
+    String deleteEmployeeById(String id);
 }
